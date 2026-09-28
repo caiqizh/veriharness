@@ -1,0 +1,21 @@
+{
+  "description": "Preview snapshot of the approved local Overleaf paper.",
+  "sources": [
+    {
+      "file": "overleaf-review/main.tex",
+      "sha256": "07e145c5b277978ffdd15ac52008d776291018d9adcb7147f8bfa33692cb4790"
+    },
+    {
+      "file": "overleaf-review/sections/05-experiments.tex",
+      "sha256": "8d04b5915bdfa62302e5caa0afa03c322541f173a0f72ccdba2639ae333acdbf"
+    },
+    {
+      "file": "paper_figures/four_libraries.py",
+      "sha256": "824a37c20851b0b0fc9c4bb2b588e4efa6fbd78a0818c34f0963600ac6b4107f"
+    },
+    {
+      "file": "overleaf-review/build/main.pdf",
+      "sha256": "5c9fffe629c5a0fcb7959b05f39b1ecf27d6d9e73d6225a55c5a19f51ecf20e2"
+    }
+  ]
+}

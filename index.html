@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="VeriHarness turns the generator’s own model into an agentic verifier: resolve disagreement, challenge consensus, and revise with evidence. Research from Cambridge and Google Cloud AI Research.">
+  <meta property="og:title" content="VeriHarness: Scaling Agentic Verification for Long-Horizon Tasks">
+  <meta property="og:description" content="Same model. Better evidence. Resolve disagreement, challenge consensus, and improve long-horizon agent outputs.">
+  <meta property="og:type" content="website">
+  <title>VeriHarness — Scaling Agentic Verification for Long-Horizon Tasks</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refinement.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="#" aria-label="VeriHarness home"><span class="brand-wordmark"><span class="letter-v">V</span><span class="letter-e">e</span><span class="letter-r">r</span><span class="letter-i">i</span>Harness</span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#idea" class="optional">Idea</a><a href="#demo">Method</a><a href="#results">Results</a><a href="#evolution" class="optional">Evolution</a><a href="#cite" class="optional">Cite</a><a href="assets/paper.pdf" class="nav-paper">Paper ↗</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="paper-title">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> A harness for agentic verification</p>
+        <h1 id="paper-title"><span class="title-brand"><span class="letter-v">V</span><span class="letter-e">e</span><span class="letter-r">r</span><span class="letter-i">i</span>Harness</span><span class="title-description">Scaling Agentic Verification<br>for Long-Horizon Tasks</span></h1>
+        <p class="hero-summary"><strong>Same model. Better evidence.</strong><br>Check what agent outputs disagree on—and what they all get wrong. Deliver a better artifact with a record of why.</p>
+        <div class="actions"><a class="button primary" href="#demo">Explore the method <span aria-hidden="true">↓</span></a><a class="button" href="assets/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="text-link" href="#cite">BibTeX ↗</a></div>
+      </div>
+      <figure class="hero-diagram">
+        <figcaption><span class="diagram-kicker">THE VERIFICATION HARNESS</span><span class="diagram-meta">ONE MODEL, THROUGHOUT</span></figcaption>
+        <svg viewBox="0 0 490 352" role="img" aria-labelledby="overview-title overview-desc">
+          <title id="overview-title">Resolve disagreement. Challenge consensus. Adjudicate with evidence.</title>
+          <desc id="overview-desc">Blue candidate rollouts feed two independent investigations: a yellow disagreement resolver and a red consensus challenger. Both evidence records feed green adjudication, producing an artifact and its verification record.</desc>
+          <defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#4285F4"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#34A853"/></marker></defs>
+          <rect x="16" y="16" width="458" height="63" rx="8" fill="#E8F0FE" stroke="#4285F4" stroke-width="1.5"/>
+          <g fill="white" stroke="#4285F4" stroke-width="1.7"><rect x="33" y="29" width="23" height="30" rx="2"/><rect x="42" y="34" width="23" height="30" rx="2"/><rect x="51" y="39" width="23" height="30" rx="2"/><path d="M57 49h11m-11 6h11m-11 6h7"/></g>
+          <text x="92" y="43" class="diagram-title" fill="#174EA6">Candidate rollouts</text><text x="92" y="63" class="diagram-small" fill="#174EA6">Same model · different attempts</text>
+          <g fill="none" stroke="#4285F4" stroke-width="2" marker-end="url(#arrow-blue)"><path d="M245 79v17H129v25"/><path d="M245 79v17h116v25"/></g>
+          <rect x="16" y="127" width="225" height="106" rx="8" fill="#FEF7E0" stroke="#FBBC04" stroke-width="2"/>
+          <rect x="249" y="127" width="225" height="106" rx="8" fill="#FCE8E6" stroke="#EA4335" stroke-width="2"/>
+          <circle cx="43" cy="155" r="14" fill="#FBBC04"/><text x="43" y="161" text-anchor="middle" font-size="22" fill="#5c3500">≠</text>
+          <circle cx="276" cy="155" r="14" fill="#EA4335"/><text x="276" y="161" text-anchor="middle" font-size="21" fill="white">=</text>
+          <text x="66" y="160" class="diagram-title" fill="#8A4B00">Resolve</text><text x="299" y="160" class="diagram-title" fill="#B3261E">Challenge</text>
+          <text x="33" y="190" class="diagram-small" fill="#633d06">Which alternative holds up?</text><text x="33" y="214" class="diagram-check" fill="#8A4B00">DISAGREEMENT → CHECK</text>
+          <text x="266" y="190" class="diagram-small" fill="#76251d">What did everyone miss?</text><text x="266" y="214" class="diagram-check" fill="#B3261E">CONSENSUS → TEST</text>
+          <path d="M129 234v23h116" fill="none" stroke="#FBBC04" stroke-width="2.5"/><path d="M361 234v23H245" fill="none" stroke="#EA4335" stroke-width="2.5"/>
+          <path d="M245 257v21" fill="none" stroke="#34A853" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+          <rect x="16" y="284" width="458" height="59" rx="8" fill="#E6F4EA" stroke="#34A853" stroke-width="1.5"/>
+          <circle cx="43" cy="313" r="14" fill="#34A853"/><path d="m36 313 5 5 9-10" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="67" y="309" class="diagram-title" fill="#137333">Adjudicate &amp; deliver</text><text x="67" y="329" class="diagram-small" fill="#137333">Revised artifact + verification record</text>
+        </svg>
+        <p class="diagram-footnote">Independent checks. Environmental evidence.</p>
+      </figure>
+    </div>
+    <div class="hero-credits">
+    <div class="authors"><span>Caiqi Zhang<sup>1*</sup></span><span>Rujun Han<sup>2</sup></span><span>Zifeng Wang<sup>2</sup></span><span>Zoey CuiZhu<sup>2</sup></span><span>Nigel Collier<sup>1</sup></span><span>Tomas Pfister<sup>2</sup></span><span>Chen-Yu Lee<sup>2</sup></span></div>
+    <p class="affiliations"><sup>1</sup> University of Cambridge &nbsp; · &nbsp; <sup>2</sup> Google Cloud AI Research</p>
+    <p class="author-note">* This work was done while Caiqi interned at Google Cloud AI Research.</p>
+    </div>
+  </section>
+  <div class="stats" aria-label="Key results">
+    <div class="stat"><strong class="green">+6.2 <small>pts</small></strong><p>Gemini 3.5 Flash<br>average gain over a single rollout</p></div>
+    <div class="stat"><strong class="green">+6.4 <small>pts</small></strong><p>Claude Opus 4.8<br>average gain over a single rollout</p></div>
+    <div class="stat"><strong>10 / 10</strong><p>model–benchmark settings<br>best primary selection score</p></div>
+    <div class="stat"><strong>5 <small>benchmarks</small></strong><p>Documents, spreadsheets, code<br>and multi-file workspace tasks</p></div>
+  </div>
+  <section id="idea" class="section">
+    <div class="observation-intro">
+    <div class="section-head"><div><p class="eyebrow">01 / The observation</p><h2>Agreement is not evidence.</h2></div></div>
+    <p class="intro">Repeated attempts expose different answers, but counting votes cannot tell us which claims to trust. And when every rollout agrees, the same model may simply be repeating the same mistake.</p>
+    </div>
+    <div class="observation-grid">
+      <article class="observation disagreement"><span class="observation-symbol" aria-hidden="true">≠</span><h3>Disagreement reveals alternatives.</h3><div class="observation-value"><strong>74<span class="percent">%</span></strong><span>of disputed claims contain a correct candidate</span></div><div class="mini-bar" aria-hidden="true"><span style="width:74%"></span></div><p>The most frequent value is correct only <strong>47%</strong> of the time. Evidence can distinguish alternatives that voting misses.</p></article>
+      <article class="observation consensus"><span class="observation-symbol" aria-hidden="true">=</span><h3>Consensus can hide a shared error.</h3><div class="observation-value"><strong>34<span class="percent">%</span></strong><span>of unanimous claims are incorrect</span></div><div class="mini-bar" aria-hidden="true"><span style="width:34%"></span></div><p>Choosing another rollout cannot fix a claim they all get wrong. The shared value, interpretation, or omission needs a check of its own.</p></article>
+    </div>
+    <p class="caption">Claim-level analysis of ten-rollout Claude Opus 4.8 pools on APEX-Agents (§2). These are statistics about individual claims, not the probability that a complete artifact is correct.</p>
+  </section>
+  <section id="demo" class="section">
+    <div class="section-head"><div><p class="eyebrow">02 / Inside the harness</p><h2>Two investigations.<br>One better artifact.</h2></div><span class="walkthrough-label"><span class="parallel-dots" aria-hidden="true"><i></i><i></i></span>Interactive walkthrough</span></div>
+    <p class="intro" style="margin-bottom:25px">The task asks for FY2025 revenue from the <strong>final financial report</strong>. Inspect the two sources of evidence below, in either order, then bring the findings together.</p>
+    <noscript><p>The interactive walkthrough requires JavaScript. The complete worked example is available in Figure 3 of the <a href="assets/paper.pdf">paper</a>.</p></noscript>
+    <div class="demo">
+      <div class="demo-toolbar"><p><strong>Task</strong> &nbsp; Report FY2025 revenue from the final financial report.</p><span class="demo-badge">PAPER’S WORKED EXAMPLE · FIG. 3</span></div>
+      <div class="demo-body">
+        <p class="stage-label"><span class="step-number candidate-step">1</span> Candidate rollouts <span class="stage-description">Three attempts from the same model</span></p>
+        <div class="candidate-grid">
+          <article class="candidate" id="candidate-a"><div class="candidate-label"><span>Rollout A</span><span>01</span></div><p class="amount">USD 100m</p><p class="source">Source: draft report</p><p class="candidate-status">Agrees with B</p></article>
+          <article class="candidate" id="candidate-b"><div class="candidate-label"><span>Rollout B</span><span>02</span></div><p class="amount">USD 100m</p><p class="source">Source: draft report</p><p class="candidate-status">Agrees with A</p></article>
+          <article class="candidate" id="candidate-c"><div class="candidate-label"><span>Rollout C</span><span>03</span></div><p class="amount">USD 120m</p><p class="source">Source: final report</p><p class="candidate-status">A different revenue figure</p></article>
+        </div>
+        <p class="stage-label investigation-stage"><span class="step-number investigation-step">2</span> Independent investigations <span class="stage-description">Separate contexts, shared evidence tools</span></p>
+        <div class="branches">
+          <article class="branch"><div class="branch-header"><span class="icon" aria-hidden="true">≠</span><h3>Disagreement resolver</h3></div><div class="branch-content"><p>100m or 120m? Trace the competing figures to the version the task actually requests.</p><div id="resolver-evidence" class="evidence" aria-live="polite">A check that separates the alternatives:
+inspect the report’s version history.</div><button id="resolve-button" class="button small" type="button">Inspect version history <span aria-hidden="true">↗</span></button></div></article>
+          <article class="branch challenge"><div class="branch-header"><span class="icon" aria-hidden="true">=</span><h3>Consensus challenger</h3></div><div class="branch-content"><p>All three say USD. Does that agreement survive a check against the source metadata?</p><div id="challenger-evidence" class="evidence" aria-live="polite">A check that tests the shared assumption:
+inspect the report’s currency metadata.</div><button id="challenge-button" class="button small" type="button">Inspect currency metadata <span aria-hidden="true">↗</span></button></div></article>
+        </div>
+        <p class="branch-note">Same model · separate investigation contexts · each produces an evidence record</p>
+        <div class="delivery" id="delivery"><div><p class="eyebrow"><span class="step-number delivery-step">3</span> Adjudication → delivery</p><div class="delivery-result" id="delivery-result">What should be delivered?</div><p id="delivery-description">Gather both evidence records to select a base and make a supported revision.</p></div><button class="button primary" id="adjudicate-button" type="button" disabled>Combine the findings →</button></div>
+        <details class="ledger" id="ledger" hidden><summary>Inspect the verification record</summary><ol><li><strong>Claim:</strong> FY2025 revenue is 100m or 120m. <strong>Check:</strong> inspect version history. <strong>Evidence:</strong> the final report supersedes the draft and states 120m. <strong>Verdict:</strong> use 120m.</li><li><strong>Claim:</strong> revenue is denominated in USD. <strong>Check:</strong> inspect source metadata. <strong>Evidence:</strong> the report is denominated in EUR. <strong>Verdict:</strong> correct the shared currency error.</li><li><strong>Base:</strong> rollout C. <strong>Revision:</strong> change USD to EUR, retaining 120m. <strong>Unresolved:</strong> none in this simplified example.</li></ol></details>
+        <div class="demo-controls"><button class="button small" id="play-button" type="button">▶ Play walkthrough</button><button class="button small" id="reset-button" type="button">↺ Reset</button><span class="status" id="demo-status" role="status">0 of 2 evidence checks complete</span></div>
+      </div>
+    </div>
+    <p class="caption">An interactive rendering of the paper’s illustrative example, not a live model call or a recorded benchmark episode. The two investigators run independently; adjudication reads both records in a fresh context.</p>
+    <div class="principles"><article class="principle"><h3>The generator’s own model</h3><p>The harness adds workspace access, evidence tools, a verification protocol, and reusable skills.</p></article><article class="principle"><h3>Evidence before revision</h3><p>Choose a base, revise when a finding supports it, or reconstruct when no candidate is usable.</p></article><article class="principle"><h3>Keep the record</h3><p>Link claims to checks and verdicts. Preserve unresolved issues when the evidence does not settle them.</p></article></div>
+  </section>
+  <section id="results" class="section">
+    <div class="section-head"><div><p class="eyebrow">03 / The evidence</p><h2>Better outputs with the same model.</h2></div><div class="segmented" role="group" aria-label="Results model"><button type="button" data-model="gemini" aria-pressed="true">Gemini 3.5 Flash</button><button type="button" data-model="opus" aria-pressed="false">Claude Opus 4.8</button></div></div>
+    <div class="result-summary" aria-live="polite"><p id="result-summary">Average native benchmark score: <b>47.2 → 53.4</b><br>Single rollout → VeriHarness with evidence-backed revision</p><strong id="result-gain">+5.4 pts</strong></div>
+    <div class="chart-toolbar"><div class="legend"><span><i class="swatch" style="--color:#FBBC04"></i>Single rollout</span><span><i class="swatch" style="--color:#4285F4"></i>Agentic verifier + revision</span><span><i class="swatch" style="--color:#34A853"></i>VeriHarness</span></div><label class="axis-toggle"><input id="zero-baseline" type="checkbox"> Start axes at zero</label></div>
+    <p id="axis-description" class="axis-description">Native benchmark score · per-benchmark axes, non-zero origins</p>
+    <div id="result-chart" class="chart-grid" role="img" aria-label="Gemini benchmark scores; exact values are available in the results table"></div>
+    <p class="caption">Table 2 · Same frozen pool of 10 rollouts for every method, same generator and verifier model, three verifier seeds. Each panel uses its own labeled vertical range, following the paper; the default axes do not start at zero. The average weights all five benchmarks equally. The agentic baseline has the same workspace and evidence tools, without the VeriHarness protocol or skills.</p>
+    <details class="table-details" id="results-table"><summary>Explore all methods and exact scores <span aria-hidden="true">↗</span></summary><div class="table-scroll"><table><caption class="visually-hidden" id="table-caption">All methods, Gemini 3.5 Flash. Mean and cross-seed standard deviation.</caption><thead><tr><th scope="col">Method</th><th scope="col">Avg</th><th scope="col">APEX</th><th scope="col">WSB</th><th scope="col">WorkBuddy</th><th scope="col">SB-2</th><th scope="col">JobBench</th></tr></thead><tbody id="results-body"></tbody></table><p class="caption">± denotes cross-seed standard deviation. CLI deployments are listed separately. The grader-informed oracle bounds selection from the fixed pool; it does not bound revision. WSB: Workspace-Bench Lite. SB-2: SpreadsheetBench 2.</p></div></details>
+    <p class="intro">VeriHarness has the highest primary selection score in all ten model–benchmark settings, and revision improves on its selected base in every setting. With revision, it also has the highest score among the compared methods on every benchmark with both models.</p>
+  </section>
+  <section id="evolution" class="section">
+    <div class="section-head"><div><p class="eyebrow">04 / Learning what to check</p><h2>The model stays fixed. The skills improve.</h2></div></div>
+    <p class="intro">A verification skill describes a reusable failure mode and a way to test it. Failure feedback can turn these procedures into a growing library of checks, with no change to the model or the verification protocol.</p>
+    <div class="evolution-layout"><div class="evolution-copy"><h3>Experience becomes a checking procedure.</h3><p>A learned spreadsheet skill asks the verifier to read the period in a growth-rate label and confirm that the formula uses the matching start and end columns.</p><ol class="evolution-steps"><li>Inspect development-task failures and feedback</li><li>Propose reusable checking and revision skills</li><li>Screen for task-specific answers and identifiers</li><li>Retain a library using development scores</li></ol><p>Held-out tasks measure progress. Their scores never choose the library.</p></div><div class="evolution-chart"><label class="select-label" for="evolution-benchmark">Held-out benchmark<select id="evolution-benchmark"><option value="apex">APEX-Agents</option><option value="sb2">SpreadsheetBench 2</option></select></label><div id="library-bars" class="library-bars" aria-live="polite"></div><p class="library-note" id="library-note">Evolving from the human-authored library adds <strong>6.8 points</strong>; evolving from empty adds <strong>11.0 points</strong>.</p><p class="caption">Claude Opus 4.8 · Final library comparison (Fig. 4) · Native scores, bars start at zero. Held-out subsets differ from the full-benchmark evaluation above.</p></div></div>
+  </section>
+  <section class="section scope" aria-label="Scope and limitations"><article><p class="eyebrow" style="margin-bottom:12px">What the harness adds</p><h3>A new axis for scaling verification.</h3><p>Verification capability depends on more than the base model. A workspace, active evidence checks, independent investigations, and reusable skills help the same model deliver a better artifact.</p><p>The protocol applies across reports, workbooks, code, and multi-file outputs, and most of the selection gain transfers to existing agent CLIs.</p></article><article><p class="eyebrow" style="margin-bottom:12px">Scope of the evidence</p><h3>Quality comes with an investigation cost.</h3><p>The reported setting uses ten rollouts per task and two frontier models. Verification adds tool calls and latency; the study targets professional deliverables where that trade-off is useful.</p><p>The verifier receives no reference answers or grading rubrics at verification time. Its output is an artifact and an evidence record, not a calibrated scalar score or a guarantee of correctness.</p></article></section>
+  <section id="cite" class="section citation"><div class="citation-head"><div><p class="eyebrow" style="margin-bottom:10px">Build on this work</p><h2>Cite VeriHarness.</h2></div><button class="button small" id="copy-citation" type="button">Copy BibTeX</button></div><pre><code id="bibtex">@article{veriharness2026,
+  title  = {VeriHarness: Scaling Agentic Verification
+            for Long-Horizon Tasks},
+  author = {Zhang, Caiqi and Han, Rujun and Wang, Zifeng
+            and CuiZhu, Zoey and Collier, Nigel
+            and Pfister, Tomas and Lee, Chen-Yu},
+  year   = {2026}
+}</code></pre><p id="copy-status" class="caption" role="status"></p></section>
+</main>
+<footer><div class="footer-inner"><span>VeriHarness · University of Cambridge & Google Cloud AI Research</span><span><a href="assets/paper.pdf">Paper ↗</a> &nbsp; · &nbsp; <a href="#">Back to top ↑</a></span></div></footer>
+</body>
+</html>
