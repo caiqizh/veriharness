@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 
 SITE = Path(__file__).resolve().parents[1]
+SCRIPTS = ('data.js', 'cases.js', 'app.js', 'cases-view.js')
 
 
 def main():
@@ -20,12 +21,12 @@ def main():
         return '<style>' + stylesheet.read_text() + '</style>'
 
     html = re.sub(r'<link rel="stylesheet" href="([^"]+)">', embed_stylesheet, html)
-    for name in ('data.js', 'app.js'):
+    for name in SCRIPTS:
         html = re.sub(r'\s*<script src="' + re.escape(name) + r'" defer></script>', '', html)
     icon = base64.b64encode((SITE / 'favicon.svg').read_bytes()).decode()
     html = html.replace('href="favicon.svg"', f'href="data:image/svg+xml;base64,{icon}"')
     pdf = base64.b64encode((SITE / 'assets/paper.pdf').read_bytes()).decode()
-    scripts = '\n'.join((SITE / name).read_text() for name in ('data.js', 'app.js'))
+    scripts = '\n'.join((SITE / name).read_text() for name in SCRIPTS)
     scripts += '\n' + f"""
 // Embed the PDF once; every paper link downloads the same local document.
 const paperBytes = Uint8Array.from(atob('{pdf}'), character => character.charCodeAt(0));

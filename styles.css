@@ -113,10 +113,6 @@ h1 .title-brand{display:block;color:var(--green);font-size:.75em;margin-bottom:1
 .ledger summary{cursor:pointer;color:var(--green);font-weight:550}
 .ledger ol{padding-left:20px;color:var(--muted)}
 .ledger li+li{margin-top:8px}
-.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:27px;margin-top:29px}
-.principle{padding-left:16px;border-left:2px solid #c6d4e3}
-.principle h3{font-size:15px;letter-spacing:0}
-.principle p{font-size:13px;color:var(--muted);margin-top:7px}
 .segmented{display:flex;background:#E6F4EA;padding:4px;border:1px solid #b7d9c0;border-radius:8px;gap:3px}
 .segmented button{background:none;border:0;border-radius:5px;color:var(--muted);padding:9px 13px;font-size:12px;white-space:nowrap}
 .segmented button[aria-pressed=true]{background:white;color:var(--green);box-shadow:0 1px 4px #172b3c12}
@@ -180,7 +176,6 @@ noscript p{padding:18px;background:var(--amber-bg);text-align:center}
 .section-head{align-items:start;flex-direction:column}
 .stat{padding:0 16px}
 .stat strong{font-size:30px}
-.principles{gap:16px}
 }
 
 @media(max-width:680px){main,.nav-inner,footer{padding-left:20px;padding-right:20px}
@@ -221,7 +216,6 @@ h2{font-size:29px}
 .delivery-result{font-size:24px}
 .delivery .button{width:100%}
 .demo-controls .status{width:100%;margin:0}
-.principles{grid-template-columns:1fr;gap:18px}
 .result-summary{padding:16px;align-items:start}
 .result-summary p{font-size:12px}
 .result-summary strong{font-size:23px}
@@ -330,7 +324,6 @@ h1 .title-brand span { color: inherit; }
 .delivery { border-color: var(--green-fill); border-left: 5px solid var(--green-fill); }
 .delivery .eyebrow { color: var(--green); }
 .delivery.complete .delivery-result { font-weight: 650; }
-.principle { border-left-color: #bdc1c6; }
 .result-summary { border-left-width: 1px; }
 .result-summary strong { font-weight: 650; }
 .segmented { background: white; padding: 3px; border-color: var(--line); }

@@ -12,8 +12,11 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="refinement.css">
+  <link rel="stylesheet" href="cases.css">
   <script src="data.js" defer></script>
+  <script src="cases.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="cases-view.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -21,7 +24,7 @@
   <div class="nav-inner">
     <a class="brand" href="#" aria-label="VeriHarness home"><span class="brand-wordmark"><span class="letter-v">V</span><span class="letter-e">e</span><span class="letter-r">r</span><span class="letter-i">i</span>Harness</span></a>
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="#idea" class="optional">Idea</a><a href="#demo">Method</a><a href="#results">Results</a><a href="#evolution" class="optional">Evolution</a><a href="#cite" class="optional">Cite</a><a href="assets/paper.pdf" class="nav-paper">Paper ↗</a>
+      <a href="#idea" class="optional">Idea</a><a href="#demo">Method</a><a href="#cases">Cases</a><a href="#results">Results</a><a href="#evolution" class="optional">Evolution</a><a href="#cite" class="optional">Cite</a><a href="assets/paper.pdf" class="nav-paper">Paper ↗</a>
     </nav>
   </div>
 </header>
@@ -32,7 +35,7 @@
         <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> A harness for agentic verification</p>
         <h1 id="paper-title"><span class="title-brand"><span class="letter-v">V</span><span class="letter-e">e</span><span class="letter-r">r</span><span class="letter-i">i</span>Harness</span><span class="title-description">Scaling Agentic Verification<br>for Long-Horizon Tasks</span></h1>
         <p class="hero-summary"><strong>Same model. Better evidence.</strong><br>Check what agent outputs disagree on—and what they all get wrong. Deliver a better artifact with a record of why.</p>
-        <div class="actions"><a class="button primary" href="#demo">Explore the method <span aria-hidden="true">↓</span></a><a class="button" href="assets/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="text-link" href="#cite">BibTeX ↗</a></div>
+        <div class="actions"><a class="button primary" href="assets/paper.pdf">Paper <span aria-hidden="true">↗</span></a><a class="button" href="https://github.com/google-research/veriharness">Code <span aria-hidden="true">↗</span></a><a class="button" href="https://huggingface.co/datasets/caiqizh/veriharness">Dataset <span aria-hidden="true">↗</span></a></div>
       </div>
       <figure class="hero-diagram">
         <figcaption><span class="diagram-kicker">THE VERIFICATION HARNESS</span><span class="diagram-meta">ONE MODEL, THROUGHOUT</span></figcaption>
@@ -109,21 +112,28 @@ inspect the report’s currency metadata.</div><button id="challenge-button" cla
         <div class="demo-controls"><button class="button small" id="play-button" type="button">▶ Play walkthrough</button><button class="button small" id="reset-button" type="button">↺ Reset</button><span class="status" id="demo-status" role="status">0 of 2 evidence checks complete</span></div>
       </div>
     </div>
-    <p class="caption">An interactive rendering of the paper’s illustrative example, not a live model call or a recorded benchmark episode. The two investigators run independently; adjudication reads both records in a fresh context.</p>
-    <div class="principles"><article class="principle"><h3>The generator’s own model</h3><p>The harness adds workspace access, evidence tools, a verification protocol, and reusable skills.</p></article><article class="principle"><h3>Evidence before revision</h3><p>Choose a base, revise when a finding supports it, or reconstruct when no candidate is usable.</p></article><article class="principle"><h3>Keep the record</h3><p>Link claims to checks and verdicts. Preserve unresolved issues when the evidence does not settle them.</p></article></div>
+    <p class="caption">An interactive rendering of the paper’s illustrative example. The two investigators run independently; adjudication reads both records in a fresh context. Recorded runs follow in the <a href="#cases">case studies</a>.</p>
+  </section>
+  <section id="cases" class="section">
+    <div class="section-head"><div><p class="eyebrow">03 / Recorded runs</p><h2>Case studies</h2></div></div>
+    <p class="intro">Each case is a recorded run from the paper’s evaluation: the pool the generator produced, what the two investigations checked in the workspace, and what was delivered.</p>
+    <noscript><p>The case studies require JavaScript.</p></noscript>
+    <div class="case-tabs" id="case-tabs" role="tablist" aria-label="Case studies"></div>
+    <div class="case-study" id="case-study" role="tabpanel"></div>
+    <p class="caption">Recorded runs from the main evaluation (Table 2). Sentences in plain type are our summaries. Text in the record panels is quoted from the verification record and shortened only where marked […]. Scores come from each benchmark’s own grader on a 0–1 scale; the verifier sees no scores, reference answers, or rubrics.</p>
   </section>
   <section id="results" class="section">
-    <div class="section-head"><div><p class="eyebrow">03 / The evidence</p><h2>Better outputs with the same model.</h2></div><div class="segmented" role="group" aria-label="Results model"><button type="button" data-model="gemini" aria-pressed="true">Gemini 3.5 Flash</button><button type="button" data-model="opus" aria-pressed="false">Claude Opus 4.8</button></div></div>
+    <div class="section-head"><div><p class="eyebrow">04 / The evidence</p><h2>Better outputs with the same model.</h2></div><div class="segmented" role="group" aria-label="Results model"><button type="button" data-model="gemini" aria-pressed="true">Gemini 3.5 Flash</button><button type="button" data-model="opus" aria-pressed="false">Claude Opus 4.8</button></div></div>
     <div class="result-summary" aria-live="polite"><p id="result-summary">Average native benchmark score: <b>47.2 → 53.4</b><br>Single rollout → VeriHarness with evidence-backed revision</p><strong id="result-gain">+5.4 pts</strong></div>
-    <div class="chart-toolbar"><div class="legend"><span><i class="swatch" style="--color:#FBBC04"></i>Single rollout</span><span><i class="swatch" style="--color:#4285F4"></i>Agentic verifier + revision</span><span><i class="swatch" style="--color:#34A853"></i>VeriHarness</span></div><label class="axis-toggle"><input id="zero-baseline" type="checkbox"> Start axes at zero</label></div>
+    <div class="chart-toolbar"><div class="legend"><span><i class="swatch" style="--color:#FBBC04"></i>Single rollout</span><span><i class="swatch" style="--color:#4285F4"></i>LLM-as-a-Verifier</span><span><i class="swatch" style="--color:#34A853"></i>VeriHarness</span></div><label class="axis-toggle"><input id="zero-baseline" type="checkbox"> Start axes at zero</label></div>
     <p id="axis-description" class="axis-description">Native benchmark score · per-benchmark axes, non-zero origins</p>
     <div id="result-chart" class="chart-grid" role="img" aria-label="Gemini benchmark scores; exact values are available in the results table"></div>
-    <p class="caption">Table 2 · Same frozen pool of 10 rollouts for every method, same generator and verifier model, three verifier seeds. Each panel uses its own labeled vertical range, following the paper; the default axes do not start at zero. The average weights all five benchmarks equally. The agentic baseline has the same workspace and evidence tools, without the VeriHarness protocol or skills.</p>
+    <p class="caption">Table 2 · Same frozen pool of 10 rollouts for every method, same generator and verifier model, three verifier seeds. Each panel uses its own labeled vertical range, following the paper; the default axes do not start at zero. The average weights all five benchmarks equally. LLM-as-a-Verifier is the most recent prior method in the comparison.</p>
     <details class="table-details" id="results-table"><summary>Explore all methods and exact scores <span aria-hidden="true">↗</span></summary><div class="table-scroll"><table><caption class="visually-hidden" id="table-caption">All methods, Gemini 3.5 Flash. Mean and cross-seed standard deviation.</caption><thead><tr><th scope="col">Method</th><th scope="col">Avg</th><th scope="col">APEX</th><th scope="col">WSB</th><th scope="col">WorkBuddy</th><th scope="col">SB-2</th><th scope="col">JobBench</th></tr></thead><tbody id="results-body"></tbody></table><p class="caption">± denotes cross-seed standard deviation. CLI deployments are listed separately. The grader-informed oracle bounds selection from the fixed pool; it does not bound revision. WSB: Workspace-Bench Lite. SB-2: SpreadsheetBench 2.</p></div></details>
     <p class="intro">VeriHarness has the highest primary selection score in all ten model–benchmark settings, and revision improves on its selected base in every setting. With revision, it also has the highest score among the compared methods on every benchmark with both models.</p>
   </section>
   <section id="evolution" class="section">
-    <div class="section-head"><div><p class="eyebrow">04 / Learning what to check</p><h2>The model stays fixed. The skills improve.</h2></div></div>
+    <div class="section-head"><div><p class="eyebrow">05 / Learning what to check</p><h2>The model stays fixed. The skills improve.</h2></div></div>
     <p class="intro">A verification skill describes a reusable failure mode and a way to test it. Failure feedback can turn these procedures into a growing library of checks, with no change to the model or the verification protocol.</p>
     <div class="evolution-layout"><div class="evolution-copy"><h3>Experience becomes a checking procedure.</h3><p>A learned spreadsheet skill asks the verifier to read the period in a growth-rate label and confirm that the formula uses the matching start and end columns.</p><ol class="evolution-steps"><li>Inspect development-task failures and feedback</li><li>Propose reusable checking and revision skills</li><li>Screen for task-specific answers and identifiers</li><li>Retain a library using development scores</li></ol><p>Held-out tasks measure progress. Their scores never choose the library.</p></div><div class="evolution-chart"><label class="select-label" for="evolution-benchmark">Held-out benchmark<select id="evolution-benchmark"><option value="apex">APEX-Agents</option><option value="sb2">SpreadsheetBench 2</option></select></label><div id="library-bars" class="library-bars" aria-live="polite"></div><p class="library-note" id="library-note">Evolving from the human-authored library adds <strong>6.8 points</strong>; evolving from empty adds <strong>11.0 points</strong>.</p><p class="caption">Claude Opus 4.8 · Final library comparison (Fig. 4) · Native scores, bars start at zero. Held-out subsets differ from the full-benchmark evaluation above.</p></div></div>
   </section>
@@ -137,6 +147,6 @@ inspect the report’s currency metadata.</div><button id="challenge-button" cla
   year   = {2026}
 }</code></pre><p id="copy-status" class="caption" role="status"></p></section>
 </main>
-<footer><div class="footer-inner"><span>VeriHarness · University of Cambridge & Google Cloud AI Research</span><span><a href="assets/paper.pdf">Paper ↗</a> &nbsp; · &nbsp; <a href="#">Back to top ↑</a></span></div></footer>
+<footer><div class="footer-inner"><span>VeriHarness · University of Cambridge & Google Cloud AI Research</span><span><a href="assets/paper.pdf">Paper ↗</a> &nbsp; · &nbsp; <a href="https://github.com/google-research/veriharness">Code ↗</a> &nbsp; · &nbsp; <a href="https://huggingface.co/datasets/caiqizh/veriharness">Dataset ↗</a> &nbsp; · &nbsp; <a href="#">Back to top ↑</a></span></div></footer>
 </body>
 </html>

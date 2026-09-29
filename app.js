@@ -99,7 +99,7 @@ function renderResults(modelKey) {
   activeModel = modelKey;
   const model = PAPER_DATA.models[modelKey];
   const baseline = model.rows.find(row => row.key === 'single');
-  const agentic = model.rows.find(row => row.key === 'agentic_revision');
+  const prior = model.rows.find(row => row.key === 'llm_verifier');
   const ours = model.rows.find(row => row.key === 'ours_revision');
   document.querySelectorAll('[data-model]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.model === modelKey)));
   $('#result-summary').innerHTML = `Average native benchmark score: <b>${baseline.avg.toFixed(1)} → ${ours.avg.toFixed(1)}</b><br>Single rollout → VeriHarness with evidence-backed revision`;
@@ -108,12 +108,12 @@ function renderResults(modelKey) {
   $('#axis-description').textContent = zeroBaseline
     ? 'Native benchmark score · shared 0–100 axes'
     : 'Native benchmark score · per-benchmark axes, non-zero origins';
-  $('#result-chart').setAttribute('aria-label', `${model.name}: single rollout, agentic verifier with revision, and VeriHarness scores. ${zeroBaseline ? 'All axes span 0–100.' : 'Each benchmark has its own labeled, non-zero axis range.'} Exact values follow in the table.`);
+  $('#result-chart').setAttribute('aria-label', `${model.name}: single rollout, LLM-as-a-Verifier, and VeriHarness scores. ${zeroBaseline ? 'All axes span 0–100.' : 'Each benchmark has its own labeled, non-zero axis range.'} Exact values follow in the table.`);
   $('#result-chart').replaceChildren();
   benchmarks.forEach((name, index) => {
     const group = document.createElement('div');
     group.className = 'chart-group';
-    group.innerHTML = `<h3>${name}</h3>${benchmarkPlot([baseline, agentic, ours], index, zeroBaseline)}<p class="chart-gain">+${ours.gain.values[index].toFixed(1)} pts over single</p>`;
+    group.innerHTML = `<h3>${name}</h3>${benchmarkPlot([baseline, prior, ours], index, zeroBaseline)}<p class="chart-gain">+${ours.gain.values[index].toFixed(1)} pts over single</p>`;
     $('#result-chart').append(group);
   });
   $('#table-caption').textContent = `All methods, ${model.name}. Mean and cross-seed standard deviation.`;

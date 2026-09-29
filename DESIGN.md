@@ -55,10 +55,16 @@ The main-results chart follows the paper's per-benchmark axis calculation:
 `low = floor(min(values)) - 1.5`, `high = ceil(max(values)) + 2.5`; tick spacing
 is 2 points for spans of at most 12 points and 5 otherwise. Each axis has tick
 labels, a range label, and a break mark; the caption states that the axes start
-above zero. An optional 0–100 view restores a common zero baseline. The page
-continues to compare against the agentic verifier with revision; only the axis
-design is borrowed from the paper's summary figure, which uses a different
-comparison baseline. Data and comparison methods are unchanged.
+above zero. An optional 0–100 view restores a common zero baseline. The three
+series are those of the paper's summary figure: single rollout,
+LLM-as-a-Verifier, and VeriHarness.
+
+The case studies (`cases.css`) reuse the same four roles: blue rollout tiles,
+a yellow resolver column, a red challenger column, and a green delivery panel
+and score. Our summaries are set in the sans face; quoted record text is set
+in the mono face on a tinted panel. Findings are collapsed by default so a
+case reads in one screen, and a short staggered entrance plays on switching
+cases unless reduced motion is requested.
 
 The worked example remains illustrative. No data values or paper figures were
 changed during the website visual revision.

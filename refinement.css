@@ -95,7 +95,7 @@ h2 { font-size: 42px; font-weight: 500; letter-spacing: -.045em; line-height: 1.
 .candidate { background: white; border: 1px solid #dce6fa; border-radius: 10px; padding: 17px; position: relative; }
 .candidate::before { content: ''; display: block; width: 24px; height: 3px; background: var(--blue); border-radius: 2px; margin-bottom: 13px; }
 .candidate .candidate-label { font-size: 10px; }
-.candidate .amount { font-size: 26px; font-weight: 500; margin-top: 14px; }
+.candidate .amount { font-size: 21px; font-weight: 550; letter-spacing: -.02em; margin-top: 12px; }
 .candidate .source, .candidate .candidate-status { color: var(--muted); }
 .candidate.rejected::before { background: var(--red-fill); }
 .candidate.selected::before { background: var(--green-fill); }
@@ -121,13 +121,6 @@ h2 { font-size: 42px; font-weight: 500; letter-spacing: -.045em; line-height: 1.
 .delivery.complete { border-color: var(--green-fill); }
 .demo-controls { padding-top: 20px; }
 .demo-controls .button { border-color: transparent; background: #f8f9fa; }
-.principles { gap: 34px; margin-top: 28px; }
-.principle { padding: 0; border-left: 0; }
-.principle::before { content: ''; display: block; width: 20px; height: 3px; background: var(--blue); border-radius: 3px; margin-bottom: 12px; }
-.principle:nth-child(2)::before { background: var(--yellow-fill); }
-.principle:nth-child(3)::before { background: var(--green-fill); }
-.principle h3 { font-size: 14px; font-weight: 600; }
-.principle p { font-size: 12px; line-height: 1.75; }
 
 /* Results remain an open, compact comparison rather than a set of cards. */
 #results { padding-top: 88px; }
@@ -227,8 +220,6 @@ h2 { font-size: 42px; font-weight: 500; letter-spacing: -.045em; line-height: 1.
   .branch-note { font-size: 9px; }
   .delivery { padding: 16px; }
   .delivery-result { font-size: 23px; }
-  .principles { grid-template-columns: 1fr; gap: 22px; padding: 0 3px; }
-  .principle::before { margin-bottom: 8px; }
   #results { padding-top: 57px; }
   .result-summary { padding: 19px 0; }
   .result-summary strong { font-size: 31px; }
@@ -275,13 +266,12 @@ body { font-size: 18px; }
 .stage-description { font-size: 14px; }
 .step-number { font-size: 12px; width: 26px; height: 26px; }
 .candidate .candidate-label { font-size: 13px; gap: 8px; }
-.candidate .source, .candidate .candidate-status { font-size: 14px; line-height: 1.6; }
+.candidate .source, .candidate .candidate-status { font-size: 15px; line-height: 1.6; }
+.candidate .source { color: #3c4043; margin-top: 4px; }
 .branch-header h3, .branch.challenge .branch-header h3 { font-size: 20px; }
 .evidence { font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
 .branch-note, .delivery .eyebrow { font-size: 12px; }
 .delivery p, .demo-controls .status, .ledger { font-size: 15px; }
-.principle h3 { font-size: 17px; }
-.principle p { font-size: 16px; }
 .result-summary p { font-size: 16px; }
 .segmented button, .legend, .axis-toggle, .axis-description { font-size: 14px; }
 .chart-group h3 { font-size: 15px; min-height: 46px; }
@@ -314,7 +304,7 @@ td .std { font-size: 12px; }
   .hero-summary, #idea .intro, #demo .intro, .intro { font-size: 17px; }
   .candidate-grid { grid-template-columns: 1fr; gap: 12px; }
   .candidate { padding: 16px 18px; }
-  .candidate .amount { font-size: 26px; margin-top: 10px; }
+  .candidate .amount { font-size: 21px; margin-top: 10px; }
   .candidate .candidate-status { min-height: 0; margin-top: 8px; }
   .candidate::before { margin-bottom: 10px; }
   .stage-description { width: 100%; padding-left: 35px; margin: -4px 0 0; }
