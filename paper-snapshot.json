@@ -1,5 +1,5 @@
 {
-  "description": "Preview snapshot of the approved local Overleaf paper.",
+  "description": "Snapshot of the paper as published on arXiv (2610.00972v1); tables extracted from the approved local Overleaf copy.",
   "sources": [
     {
       "file": "overleaf-review/main.tex",
@@ -14,8 +14,8 @@
       "sha256": "824a37c20851b0b0fc9c4bb2b588e4efa6fbd78a0818c34f0963600ac6b4107f"
     },
     {
-      "file": "overleaf-review/build/main.pdf",
-      "sha256": "3905acd8b0c3e01c947edd39327ba208b728293f39ae05754c926327ea97bb8b"
+      "file": "arXiv:2610.00972v1 (website/assets/paper.pdf)",
+      "sha256": "a031033e46ea52c833a2f3d4f3588ba2ee5f332fe027c026c1495bfa31d50969"
     }
   ]
 }
